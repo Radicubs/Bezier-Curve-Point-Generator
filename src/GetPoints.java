@@ -35,35 +35,60 @@ public class GetPoints {
 //                barrelCp8, barrelCp9, barrelCp10, barrelCp11, barrelCp12, barrelCp13, barrelCp14, barrelCp15,
 //                barrelCp16, barrelCp17, barrelCp18, barrelCp19, barrelCp20, barrelCp21,
 //                barrelCp22, barrelCp23 };
-        BezierPoint slalomCp1 = new BezierPoint(12.6, 6.3);
-        BezierPoint slalomCp2 = new BezierPoint(40.4, 43.4);
-        BezierPoint slalomCp3 = new BezierPoint(84.9, 47);
-        BezierPoint slalomCp4 = new BezierPoint(59.8, -30.3);
-        BezierPoint slalomCp5 = new BezierPoint(104, -30.2);
+//        BezierPoint slalomCp1 = new BezierPoint(12.6, 6.3);
+//        BezierPoint slalomCp2 = new BezierPoint(40.4, 43.4);
+//        BezierPoint slalomCp3 = new BezierPoint(84.9, 47);
+//        BezierPoint slalomCp4 = new BezierPoint(59.8, -30.3);
+//        BezierPoint slalomCp5 = new BezierPoint(104, -30.2);
+//
+//        BezierPoint slalomCp6 = new BezierPoint(90.6, 35.4);
+//        BezierPoint slalomCp7 = new BezierPoint(72.7, 78);
+//        BezierPoint slalomCp8 = new BezierPoint(71, -8.1);
+//
+//        BezierPoint slalomCp9 = new BezierPoint(81.5, 1.2);
+//        BezierPoint slalomCp10 = new BezierPoint(36.3, 1);
+//        BezierPoint slalomCp11 = new BezierPoint(23.8, 1.9);
+//
+//        BezierPoint slalomCp12 = new BezierPoint(14.8, 30);
+//
+//        BezierPoint[] pointsArr = { slalomCp1, slalomCp2, slalomCp3, slalomCp4, slalomCp5, slalomCp6, slalomCp7,
+//                slalomCp8, slalomCp9, slalomCp10, slalomCp11, slalomCp12 };
+//
 
-        BezierPoint slalomCp6 = new BezierPoint(90.6, 35.4);
-        BezierPoint slalomCp7 = new BezierPoint(72.7, 78);
-        BezierPoint slalomCp8 = new BezierPoint(71, -8.1);
+        BezierPoint bounceCp1 = new BezierPoint(-26.9, -1.3);
+        BezierPoint bounceCp2 = new BezierPoint(-12.6, -2.9);
+        BezierPoint bounceCp3 = new BezierPoint(-18.2, 59);
+        BezierPoint bounceCp4 = new BezierPoint(-23.6, -4.4);
+        BezierPoint bounceCp5 = new BezierPoint(-22.5, -11.7);
+        BezierPoint bounceCp6 = new BezierPoint(-5.1, -55.4);
+        BezierPoint bounceCp7 = new BezierPoint(26.4, -48.7);
+        BezierPoint bounceCp8 = new BezierPoint(-28.1, -3);
 
-        BezierPoint slalomCp9 = new BezierPoint(81.5, 1.2);
-        BezierPoint slalomCp10 = new BezierPoint(36.3, 1);
-        BezierPoint slalomCp11 = new BezierPoint(23.8, 1.9);
+        BezierPoint bounceCp9 = new BezierPoint(32, 137);
+        BezierPoint bounceCp10 = new BezierPoint(-14.5, 11.4);
+        BezierPoint bounceCp11 = new BezierPoint(-16, -28.4);
 
-        BezierPoint slalomCp12 = new BezierPoint(14.8, 30);
-
-        BezierPoint[] pointsArr = { slalomCp1, slalomCp2, slalomCp3, slalomCp4, slalomCp5, slalomCp6, slalomCp7,
-                slalomCp8, slalomCp9, slalomCp10, slalomCp11, slalomCp12 };
+        BezierPoint bounceCp12 = new BezierPoint(-13.2, -42.2);
+        BezierPoint bounceCp13 = new BezierPoint(60.3, -50);
+        BezierPoint bounceCp14 = new BezierPoint(7.2, 39.6);
+        BezierPoint bounceCp15 = new BezierPoint(11.3, 18.6);
+        BezierPoint bounceCp16 = new BezierPoint(27.2, 3.2);
+        BezierPoint[] pointsArr = {bounceCp1, bounceCp2, bounceCp3, bounceCp4,
+                bounceCp5, bounceCp6, bounceCp7,
+                bounceCp8, bounceCp9, bounceCp10, bounceCp11, bounceCp12, bounceCp13,
+                bounceCp14, bounceCp15,
+                bounceCp16};
 
         BezierFunction function = new BezierFunction(pointsArr);
 
-        PrintWriter writer = new PrintWriter("Slalom.txt", "UTF-8");
+        PrintWriter writer = new PrintWriter("BounceLarge.txt", "UTF-8");
         double t = 0;
         LinkedList<CoordinatePair> list = new LinkedList<CoordinatePair>();
         CoordinatePair previousPoint = getFunctionVal(function, t);
         for (int p = 0; p < 100000; p++) {
             writer.println(previousPoint);
 
-            while (previousPoint.getDistance(getFunctionVal(function, t)) < 0.25 && t < 1) {
+            while (previousPoint.getDistance(getFunctionVal(function, t)) < 0.2 && t < 1) {
                 t += (0.001);
             }
             if (t > 1) {
